@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inverted Green Background with Check Mark</title>
+    <style>
+        body {
+            background: radial-gradient(#43A047, #2E7D32); /* Inverted color values */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .checkmark-container {
+            width: 1px;
+            height: 1px;
+            position: relative;
+            animation: circleAnimation 1s ease-in-out forwards;
+        }
+
+        .checkmark {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .checkmark:before {
+            content: "\2713";
+            font-size: 1px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            animation: tickAnimation 1s ease-in-out forwards;
+            font-weight: bold;
+            line-height: 0.9;
+        }
+
+        .checkmark-container.checked .checkmark:before {
+            opacity: 1;
+            color: #4CAF50;
+        }
+
+        @keyframes circleAnimation {
+            0% {
+                width: 1px;
+                height: 1px;
+            }
+            50% {
+                width: 150px;
+                height: 150px;
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @keyframes tickAnimation {
+            0% {
+                font-size: 1px;
+                transform: rotate(600deg);
+            }
+            50% {
+                font-size: 80px;
+                transform: rotate(0deg);
+            }
+            100% {
+                font-size: 80px;
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkmark-container">
+        <div class="checkmark"></div>
+    </div>
+
+    <script>
+        // Add 'checked' class to the checkmark container to display the checkmark
+        var checkmarkContainer = document.querySelector('.checkmark-container');
+        checkmarkContainer.classList.add('checked');
+    </script>
+</body>
+</html>
